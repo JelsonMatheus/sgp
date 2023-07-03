@@ -1,0 +1,129 @@
+
+/********** Colors ***********/
+:root {
+    --color-primary: #739822;
+    --color-primary-dark: #4f681f;
+    --color-secondary:  #cccccc;
+    --color-text: #ffffff;
+    --navbar-height: 3rem;
+}
+
+body {
+    height: 100vh;
+}
+
+.wrapper {
+    height: calc(100% - var(--navbar-height));
+}
+
+.wrapper>.row {
+    height: auto;
+}
+
+.navbar {
+    height: var(--navbar-height);
+    background: var(--color-primary-dark)  !important;
+    color: var(--color-text);
+}
+
+.navbar-brand {
+    height: var(--navbar-height);
+    color: var(--color-text)  !important;
+    background: var(--color-primary);
+    font-size: 1rem;
+}
+
+.navbar-toggler-icon {
+    font-size: 0.8rem;
+}
+
+.module-bar {
+    background: var(--color-primary-dark);
+    color: var(--color-text);
+}
+
+#sidebarMenu .nav-link {
+    color: white;
+}
+
+#sidebarMenu .nav-link.active {
+    border-bottom: 2px solid var(--color-primary);
+}
+
+#sidebarMenu .nav-link:hover {
+    background: var(--color-primary);
+    color: black;
+}
+#sidebarMenu .nav-link.danger:hover {
+    background: #FF0000;
+    color: rgb(241, 237, 237);
+}
+
+.table > thead {
+    background: var(--color-secondary);
+}
+.table > tbody tr:nth-child(odd) {
+    background: #e6e2dc !important;
+}
+
+.page-item.active .page-link {
+    border: black;
+}
+
+.page-item .page-link {
+    color: black;
+}
+
+.bi-pencil-square {
+    color: blue;
+}
+
+.toast-danger {
+    background: red;
+    color: white;
+}
+.toast-succes {
+    background: rgb(71, 131, 71);
+    color: white
+}
+.form-control:focus {
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    border-color: rgb(102, 167, 76);
+    box-shadow: 0 0 0 .25rem rgba(102, 167, 76, 0.25);
+}
+.btn-primary {
+    --bs-btn-bg: var(--color-primary);
+    --bs-btn-border-color: var(--color-primary-dark);
+    --bs-btn-hover-bg: var(--color-primary-dark);
+    --bs-btn-hover-border-color: var(--color-primary);
+    --bs-btn-active-bg: var(--color-primary-dark);
+    --bs-btn-active-border-color: var(--color-primary-dark);
+}
+.btn-outline-primary {
+    --bs-btn-border-color: var(--color-primary);
+    --bs-btn-active-bg: var(--color-primary);
+    --bs-btn-active-border-color: var(--color-primary);
+    --bs-btn-color: var(--color-primary)
+}
+
+select[readonly] {
+    background: #eee; /*Simular campo inativo - Sugestão @GabrielRodrigues*/
+    pointer-events: none;
+    touch-action: none;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    main > .container {
+        border: 1px solid var(--border-color);
+    }
+
+    .navbar-brand {
+        font-size: 1.4rem;
+    }
+
+    .wrapper > .row {
+        height: 100%;
+    }
+}

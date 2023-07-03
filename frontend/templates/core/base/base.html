@@ -1,0 +1,84 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Proffer - SGP{% endblock %}</title>
+
+    {% block styles %}
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    
+    <!-- Toastify -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <link href="{% static 'css/admin.css' %}" rel="stylesheet">
+    {% endblock %}
+</head>
+
+<body>
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap justify-content-start p-0 shadow">
+        <div class="navbar-brand col-5 col-md-3 col-lg-2 me-0 ps-3 pt-2">
+            <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <span class="ms-2 ms-md-5 fw-bold">ADMIN</span>
+        </div>
+        <span class="d-none d-sm-inline fw-bold ms-auto me-3 ms-md-3">
+            PROFFER
+            <!--img src="{% static 'img/logo-proffer.png' %}" height="40px"-->
+        </span>
+        <span class="ms-auto me-3">
+            Bem-vindo, {{ user.username }}!
+        </span>
+    </header>
+
+    <div class="container-fluid wrapper">
+        <div class="row">
+
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+                <div class="position-sticky pt-3">
+                    {% include "core/shared/menu.html" %}
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-1 px-md-4 py-3">
+                <div class="container bg-white px-0 py-4 px-md-4">
+                    {% include "core/shared/bar.html" with modulo=modulo %}
+                    {% block content %} {% endblock %}
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div id="spinner" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 bg-transparent">
+                <div class="modal-body">
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-grow text-info" style="width:5rem; height:5rem;" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    {% block javascript %} {% endblock %}
+</body>
+
+</html>

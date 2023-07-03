@@ -1,0 +1,130 @@
+{% extends 'core/base/base.html' %}
+{% load static %}
+
+{% block title %}SGP - Add{% endblock %}
+
+{% block styles %}
+{{ block.super }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link href="{% static 'css/post-create.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="p-1 p-sm-4 border">
+    <div class="">
+        <form id="regForm" action="{% url 'core:create' %}" method="post">
+            {% csrf_token %}
+            <ul class="form-stepper form-stepper-horizontal text-center">
+                <li class="form-stepper-active text-center form-stepper-list" step="1">
+                    <a class="mx-1">
+                        <span class="form-stepper-circle">
+                            <span>1</span>
+                        </span>
+                    </a>
+                </li>
+                <li class="form-stepper-unfinished text-center form-stepper-list" step="2">
+                    <a class="mx-1">
+                        <span class="form-stepper-circle text-muted">
+                            <span>2</span>
+                        </span>
+                    </a>
+                </li>
+                <li class="form-stepper-unfinished text-center form-stepper-list" step="3">
+                    <a class="mx-1">
+                        <span class="form-stepper-circle text-muted">
+                            <span>3</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="border rounded rounded p-4 mt-1">
+                <div class="tab">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Título</label>
+                        <input type="text" class="form-control valid" id="title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Descrição</label>
+                        <textarea class="form-control valid" id="description" rows="3"></textarea>
+                    </div>
+                </div>
+
+                <div class="tab">
+                    <div id="spinner-div" class="d-flex align-items-center pb-2">
+                        <strong id="labelSpinner">Loading...</strong>
+                        <div id="spinner" class="spinner-border text-success ms-auto" role="status" aria-hidden="true"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Título</label>
+                        <input type="text" class="form-control" id="titleSug" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="suggestion" class="form-label">Sugestão</label>
+                        <textarea class="form-control" id="suggestion" rows="5"></textarea>
+                    </div>
+                    <div>
+                        <span>Tags:</span>
+                        <div id="tagsDiv"></div>
+                    </div>
+                </div>
+                
+                <div class="tab">
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Título</label>
+                                <input id="titlePost" type="text" class="form-control" name="title">
+                            </div>
+                            <div class="mb-3">
+                                <label for="content" class="form-label">Texto</label>
+                                <textarea class="form-control" id="contentPost" rows="10" name="content"></textarea>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <label for="date_scheduling" class="form-label">Agendar para:</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-calendar3"></i>
+                                    </span>
+                                    <input id="dateScheduling" type="text" class="form-control" name="date_scheduling">
+                                </div>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="social[]" value="facebook" class="btn-check" id="facebook" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="facebook">
+                                    <i class="bi bi-instagram"></i> Facebook
+                                </label>
+                                
+                                <input type="checkbox"  name="social[]" value="instagram" class="btn-check" id="instagram" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="instagram">
+                                    <i class="bi bi-facebook"></i> Instagram
+                                </label> 
+
+                                <input type="checkbox"  name="social[]" value="linkedin" class="btn-check" id="linkedin" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="linkedin">
+                                    <i class="bi bi-linkedin"></i> Linkedin
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="overflow:auto;">
+                    <div style="float:right;">
+                        <button type="button" class="btn btn-primary" id="prevBtn">Voltar</button>
+                        <button type="button" class="btn btn-primary" id="nextBtn">Proxímo</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+{{ block.super }}
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="{% static 'js/post-create.js' %}"></script>
+{% endblock %}
